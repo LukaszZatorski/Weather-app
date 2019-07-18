@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
 import axios from 'axios';
+import { DateTime } from 'luxon';
 
 interface Weather {
   [string_key: string]: string | number | object;
+  timezone: string;
+  sunrise: string;
+  sunset: string;
   weather: { icon: string; code: number; description: string };
 }
 
@@ -16,6 +20,13 @@ type CurrentWeatherProps = {
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 if (!API_KEY) throw new Error('REACT_APP_WEATHER_API_KEY missing');
+
+export const changeTimeZone = (time: string, tz: string) => {
+  const adjustedTime: string = DateTime.fromISO(time, { zone: 'UTC' })
+    .setZone(tz)
+    .toLocaleString(DateTime.TIME_24_SIMPLE);
+  return adjustedTime;
+};
 
 const CurrentWeather = ({ latLng }: CurrentWeatherProps) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -95,11 +106,15 @@ const CurrentWeather = ({ latLng }: CurrentWeatherProps) => {
             </div>
             <div className="Sunrise">
               <span>Sunrise</span>
-              <span className="Details-data">{weather!.sunrise}</span>
+              <span className="Details-data">
+                {changeTimeZone(weather!.sunrise, weather!.timezone)}
+              </span>
             </div>
             <div className="Sunset">
               <span>Sunset</span>
-              <span className="Details-data">{weather!.sunset}</span>
+              <span className="Details-data">
+                {changeTimeZone(weather!.sunset, weather!.timezone)}
+              </span>
             </div>
           </div>
         </React.Fragment>
