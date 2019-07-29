@@ -19,7 +19,6 @@ type CurrentWeatherProps = {
 };
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-if (!API_KEY) throw new Error('REACT_APP_WEATHER_API_KEY missing');
 
 export const changeTimeZone = (time: string, tz: string) => {
   const adjustedTime: string = DateTime.fromISO(time, { zone: 'UTC' })
