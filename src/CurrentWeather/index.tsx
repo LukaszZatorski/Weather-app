@@ -11,12 +11,14 @@ interface Weather {
   weather: { icon: string; code: number; description: string };
 }
 
-type CurrentWeatherProps = {
+const defaultProps = {
   latLng: {
-    lat: number;
-    lng: number;
-  };
+    lat: 52.406374,
+    lng: 16.925168,
+  },
 };
+
+type CurrentWeatherProps = typeof defaultProps;
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
@@ -121,5 +123,7 @@ const CurrentWeather = ({ latLng }: CurrentWeatherProps) => {
     </div>
   );
 };
+
+CurrentWeather.defaultProps = defaultProps;
 
 export default CurrentWeather;

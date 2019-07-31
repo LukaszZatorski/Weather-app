@@ -69,9 +69,7 @@ describe('CurrentWeather', () => {
   test('fetch weather data and update DOM', async () => {
     mockedAxios.get.mockResolvedValue(response);
 
-    const { getByText, container } = await render(
-      <CurrentWeather latLng={latLng} />,
-    );
+    const { getByText, container } = render(<CurrentWeather latLng={latLng} />);
 
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
     expect(mockedAxios.get).toHaveBeenCalledWith(url);

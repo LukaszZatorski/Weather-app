@@ -12,16 +12,16 @@
 
 .Info-general,
 .Info-details {
-  height: 45vh;
+  min-height: 45vh;
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     width: 50vw;
-    height: 45vh;
+    height: 55vh;
   }
   @media screen and (min-width: 1024px) {
     width: 40vw;
-    height: 45vh;
+    min-height: 45vh;
     -webkit-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.5);
     box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.5);

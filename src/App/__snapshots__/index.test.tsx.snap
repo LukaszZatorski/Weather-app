@@ -11,6 +11,21 @@ exports[`App has a valid snapshot 1`] = `
       <h4>
         SimpleWeather
       </h4>
+      <div
+        class="Search-box"
+      >
+        <input
+          aria-autocomplete="list"
+          aria-expanded="false"
+          autocomplete="off"
+          class="location-search-input"
+          disabled=""
+          placeholder="Enter City..."
+          role="combobox"
+          type="text"
+          value=""
+        />
+      </div>
     </header>
     <div
       class="Current-weather"
