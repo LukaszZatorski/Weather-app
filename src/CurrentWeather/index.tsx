@@ -41,7 +41,6 @@ const CurrentWeather = ({ latLng }: CurrentWeatherProps) => {
         }&key=${API_KEY}`,
       )
       .then(response => {
-        console.log(response);
         setWeather(response.data.data[0]);
         setIsLoading(false);
       })
