@@ -30,5 +30,10 @@
         }
       }
     }
+    .Forecast-detailed {
+      display: flex;
+      justify-content: space-around;
+      margin: 2vh 0;
+    }
   }
 }
