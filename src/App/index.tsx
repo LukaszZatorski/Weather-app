@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './index.scss';
 import CurrentWeather from '../CurrentWeather';
 import LocationSearch from '../LocationSearch';
+import DailyForecast from '../DailyForecast';
 
 type LatLng = {
   lat: number;
@@ -26,12 +27,13 @@ const App = () => {
     setLatLng(latLng);
   };
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='App'>
+      <header className='App-header'>
         <h4>SimpleWeather</h4>
         <LocationSearch updateLatLng={updateLatLng} />
       </header>
       <CurrentWeather latLng={latLng} />
+      <DailyForecast latLng={latLng} />
     </div>
   );
 };

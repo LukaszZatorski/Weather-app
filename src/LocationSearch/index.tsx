@@ -73,7 +73,7 @@ const LocationSearch = ({ updateLatLng }: LocationSearchProps) => {
     types: ['(cities)'],
   };
   return (
-    <div className="Location-search">
+    <div className='Location-search'>
       <PlacesAutocomplete
         highlightFirstSuggestion
         searchOptions={searchOptions}
@@ -81,10 +81,10 @@ const LocationSearch = ({ updateLatLng }: LocationSearchProps) => {
         onChange={handleChange}
         onSelect={handleSelect}
         shouldFetchSuggestions={address.length > 1}
-        googleCallbackName="placesAutocompleteCallback"
+        googleCallbackName='placesAutocompleteCallback'
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="Search-box">
+          <div className='Search-box'>
             <input
               {...getInputProps({
                 placeholder: 'Enter City...',
@@ -92,7 +92,7 @@ const LocationSearch = ({ updateLatLng }: LocationSearchProps) => {
               })}
             />
             {suggestions.length > 0 && (
-              <div className="autocomplete-dropdown-container">
+              <div className='autocomplete-dropdown-container'>
                 {loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {
                   const className = suggestion.active
@@ -116,8 +116,8 @@ const LocationSearch = ({ updateLatLng }: LocationSearchProps) => {
           </div>
         )}
       </PlacesAutocomplete>
-      <span className="Geolocation" onClick={getLocation}>
-        <i className="material-icons">my_location</i>
+      <span className='Geolocation' onClick={getLocation}>
+        <i className='fas fa-map-marker-alt fa-2x'></i>
       </span>
     </div>
   );

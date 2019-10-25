@@ -1,0 +1,34 @@
+.Forecast {
+  background-color: #f6f6f6;
+  -webkit-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 5px -5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 1024px) {
+    margin: 2vh 10vw;
+  }
+  .Forecast-item {
+    margin-top: 2vh;
+    border-bottom: lightgray solid 1px;
+    .Forecast-general {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      .Temperature-min {
+        color: #2ca0ff;
+      }
+      span {
+        min-width: 10vw;
+        i {
+          margin-right: 5px;
+        }
+        img {
+          max-height: 50%;
+          max-width: 50%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}

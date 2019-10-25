@@ -33,15 +33,16 @@ exports[`App has a valid snapshot 1`] = `
           class="Geolocation"
         >
           <i
-            class="material-icons"
-          >
-            my_location
-          </i>
+            class="fas fa-map-marker-alt fa-2x"
+          />
         </span>
       </div>
     </header>
     <div
       class="Current-weather"
+    />
+    <div
+      class="Forecast"
     />
   </div>
 </div>

@@ -8,7 +8,7 @@ interface Weather {
   timezone: string;
   sunrise: string;
   sunset: string;
-  weather: { icon: string; code: number; description: string };
+  weather: { icon: string; code: string; description: string };
 }
 
 const defaultProps = {
@@ -36,9 +36,7 @@ const CurrentWeather = ({ latLng }: CurrentWeatherProps) => {
   useEffect(() => {
     axios
       .get(
-        `https://api.weatherbit.io/v2.0/current?lat=${latLng.lat}&lon=${
-          latLng.lng
-        }&key=${API_KEY}`,
+        `https://api.weatherbit.io/v2.0/current?lat=${latLng.lat}&lon=${latLng.lng}&key=${API_KEY}`,
       )
       .then(response => {
         setWeather(response.data.data[0]);
@@ -47,72 +45,72 @@ const CurrentWeather = ({ latLng }: CurrentWeatherProps) => {
       .catch(error => console.log(error));
   }, [latLng]);
   return (
-    <div className="Current-weather">
+    <div className='Current-weather'>
       {!isLoading ? (
         <React.Fragment>
-          <div className="Info-general">
+          <div className='Info-general'>
             <h2>{weather!.city_name}</h2>
-            <div className="Conditions">
-              <div className="Icon-weather">
+            <div className='Conditions'>
+              <div className='Icon-weather'>
                 <img
                   src={`https://www.weatherbit.io/static/img/icons/${
                     weather!.weather.icon
                   }.png`}
-                  alt="weather icon"
+                  alt='weather icon'
                 />
               </div>
-              <div className="Temperature">
+              <div className='Temperature'>
                 {weather!.temp}
                 &deg;
               </div>
-              <div className="Condition-desc">
+              <div className='Condition-desc'>
                 {weather!.weather.description}
               </div>
-              <div className="Real-feels">
+              <div className='Real-feels'>
                 Feels like: {weather!.app_temp}
                 &deg;
               </div>
             </div>
           </div>
-          <div className="Info-details">
-            <div className="Humidity">
+          <div className='Info-details'>
+            <div className='Humidity'>
               <span>Humidity</span>
-              <span className="Details-data">{weather!.rh} %</span>
+              <span className='Details-data'>{weather!.rh} %</span>
             </div>
-            <div className="Visibility">
+            <div className='Visibility'>
               <span>Visibility</span>
-              <span className="Details-data">{weather!.vis} km</span>
+              <span className='Details-data'>{weather!.vis} km</span>
             </div>
-            <div className="Uv-index">
+            <div className='Uv-index'>
               <span>UV index</span>
-              <span className="Details-data">{weather!.uv} of 11</span>
+              <span className='Details-data'>{weather!.uv} of 11</span>
             </div>
-            <div className="Pressure">
+            <div className='Pressure'>
               <span>Pressure</span>
-              <span className="Details-data">{weather!.pres} hpa</span>
+              <span className='Details-data'>{weather!.pres} hpa</span>
             </div>
-            <div className="Dew-point">
+            <div className='Dew-point'>
               <span>Dew point</span>
-              <span className="Details-data">
+              <span className='Details-data'>
                 {weather!.dewpt}
                 &deg;
               </span>
             </div>
-            <div className="Wind">
+            <div className='Wind'>
               <span>Wind</span>
-              <span className="Details-data">
+              <span className='Details-data'>
                 {weather!.wind_cdir} {weather!.wind_spd} m/s
               </span>
             </div>
-            <div className="Sunrise">
+            <div className='Sunrise'>
               <span>Sunrise</span>
-              <span className="Details-data">
+              <span className='Details-data'>
                 {changeTimeZone(weather!.sunrise, weather!.timezone)}
               </span>
             </div>
-            <div className="Sunset">
+            <div className='Sunset'>
               <span>Sunset</span>
-              <span className="Details-data">
+              <span className='Details-data'>
                 {changeTimeZone(weather!.sunset, weather!.timezone)}
               </span>
             </div>
