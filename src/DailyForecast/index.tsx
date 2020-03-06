@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './index.scss';
 import axios from 'axios';
 import { DateTime } from 'luxon';
+import Collapsible from 'react-collapsible';
 
 interface Weather {
   [string_key: string]: string | number | object;
@@ -70,36 +71,38 @@ type ForecastItemProps = {
 };
 
 const ForecastItem = ({ weather, timeZone }: ForecastItemProps) => {
-  const [toggle, setToggle] = useState(false);
   return (
-    <div className='Forecast-item' onClick={() => setToggle(!toggle)}>
-      <div className='Forecast-general'>
-        <span className='Date'>
-          {DateTime.fromISO(weather.valid_date).toLocaleString({
-            weekday: 'short',
-            month: 'short',
-            day: '2-digit',
-          })}
-        </span>
-        <span>
-          <img
-            src={`https://www.weatherbit.io/static/img/icons/${
-              weather!.weather.icon
-            }.png`}
-            alt='weather icon'
-          />
-        </span>
-        <span>
-          <i className='fas fa-umbrella'></i>
-          {weather.pop}%
-        </span>
-        <span>
-          <span>{weather.max_temp}&deg;</span>
-          {' / '}
-          <span className='Temperature-min'>{weather.min_temp}&deg;</span>
-        </span>
-      </div>
-      {toggle && (
+    <div className='Forecast-item'>
+      <Collapsible
+        trigger={
+          <div className='Forecast-general'>
+            <span className='Date'>
+              {DateTime.fromISO(weather.valid_date).toLocaleString({
+                weekday: 'short',
+                month: 'short',
+                day: '2-digit',
+              })}
+            </span>
+            <span>
+              <img
+                src={`https://www.weatherbit.io/static/img/icons/${
+                  weather!.weather.icon
+                }.png`}
+                alt='weather icon'
+              />
+            </span>
+            <span>
+              <i className='fas fa-umbrella'></i>
+              {weather.pop}%
+            </span>
+            <span>
+              <span>{weather.max_temp}&deg;</span>
+              {' / '}
+              <span className='Temperature-min'>{weather.min_temp}&deg;</span>
+            </span>
+          </div>
+        }
+      >
         <div className='Forecast-detailed'>
           <span>
             Wind: {weather.wind_cdir} {weather.wind_spd} m/s
@@ -108,7 +111,7 @@ const ForecastItem = ({ weather, timeZone }: ForecastItemProps) => {
           <span>Sunrise: {changeTimeZone(weather.sunrise_ts, timeZone)}</span>
           <span>Sunset: {changeTimeZone(weather.sunset_ts, timeZone)}</span>
         </div>
-      )}
+      </Collapsible>
     </div>
   );
 };
