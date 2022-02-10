@@ -10,7 +10,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "luxon": "^1.17.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-collapsible": "^2.7.0",
     "react-dom": "^16.8.6",
